@@ -32,8 +32,9 @@ $app->register(new Silex\Provider\SessionServiceProvider());
 $app->get('/', function(Application $app, Request $request) {
     $app['monolog']->debug('Entered index controller');
     if(!$app['session']->get('access_token')) {
-        $app['monolog']->debug('"access_token" key is not set in session, so redirecting you now to Google Authentication Consent URI...');
-        return $app->redirect($app['google_client']->createAuthUrl());
+        $google_redirect_url = $app['google_client']->createAuthUrl();
+        $app['monolog']->debug(sprintf('"access_token" key is not set in session, so redirecting you now to Google Authentication Consent URI... URL=[%s]', $google_redirect_url));
+        return $app->redirect($google_redirect_url);
     }else{
         $app['monolog']->debug('"access_token" key is now set in session, so redirecting you /redirected route');
         return $app->redirect('/redirected');
