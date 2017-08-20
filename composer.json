@@ -1,0 +1,13 @@
+{
+    "name": "alexey/oauth",
+    "require": {
+        "google/apiclient": "^2.2",
+        "silex/silex": "^2.2"
+    },
+    "authors": [
+        {
+            "name": "Lyosha Shchur",
+            "email": "lyosha.shchur@gmail.com"
+        }
+    ]
+}
